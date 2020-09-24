@@ -16,7 +16,7 @@ class Player{
     Player(){
 
     }
-    static int jsonParser(const std::string path){
+    static Player unitParser(const std::string path){
         
         int result = 0;
         std::string line;
@@ -27,6 +27,9 @@ class Player{
 
             result = 1;
             int position = 0;
+            std::string name;
+            uint_t dmg;
+            uint_t hp;
             while (std::getline(json_file, line))
             {
                 
@@ -42,14 +45,23 @@ class Player{
                 {
                     token.erase(std::remove(token.begin(),token.end(),s1[i]),token.end());
                 }
-                std::cout << token << std::endl;
+                if (position==1)
+                {
+                    //std::cout << token << std::endl;
+                    name = token;
+                }else if(position==2){
+                    hp = atoi(token.c_str());
+                }else if(position==3){
+                    dmg = atoi(token.c_str());
+                }
+                
                 position+=1;
                 
             }
-
+                return Player(hp,dmg,name);
         }
 
-        return result;
+        return Player();
     }
 
     const uint_t getHealth();

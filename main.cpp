@@ -5,14 +5,14 @@ int main(int argc,char *argv[]){
 
     //Player player1 = Player(atoi(argv[2]), atoi(argv[3]), std::string(argv[1]));
     //Player player2 = Player(atoi(argv[5]), atoi(argv[6]), std::string(argv[4]));
-    Player player1 = Player();
-    Player player2 = Player();
+    Player player1;
+    Player player2;
 
-    player1.jsonParser("kakarott.json");
-    player2.jsonParser("vegeta.json");
+    player1 = Player::unitParser("kakarott.json");
+    player2 = Player::unitParser("vegeta.json");
 
 
-    /*std::cout << player1.getName() << " HP: " << player1.getHealth() << " DMG: " << player1.getDamage() << std::endl;
+        std::cout << player1.getName() << " HP: " << player1.getHealth() << " DMG: " << player1.getDamage() << std::endl;
         std::cout << player2.getName() << " HP: " << player2.getHealth() << " DMG: " << player2.getDamage() << std::endl;
         while (player1.getHealth()!=0 && player2.getHealth()!=0)
         {
@@ -32,7 +32,7 @@ int main(int argc,char *argv[]){
                 std::cout << player1.getName() << " lost all Healthpoint." << std::endl;
                 break;
             }
-        }*/
+        }
 
     return 0;
 }
