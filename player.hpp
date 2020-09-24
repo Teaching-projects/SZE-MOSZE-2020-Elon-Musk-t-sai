@@ -1,0 +1,81 @@
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <algorithm>
+
+typedef unsigned int uint_t;
+
+class Player{
+    public:
+    Player(const uint_t hp, const uint_t dmg, const std::string n):health(hp),damage(dmg),name(n){
+    
+    }
+    Player(){
+
+    }
+    static Player unitParser(const std::string path){
+        
+        int result = 0;
+        std::string line;
+        std::ifstream json_file(path);
+        if(json_file.is_open()){
+            
+            char s1[] = {'\"',' ',',',':'};
+
+            result = 1;
+            int position = 0;
+            std::string name;
+            uint_t dmg;
+            uint_t hp;
+            while (std::getline(json_file, line))
+            {
+                
+                if (position == 0 || position == 4)
+                {
+                    position+=1;
+                    continue;
+                }
+                
+                std::string delimiter = ":";
+                std::string token = line.substr(line.find(delimiter),line.length()-1);
+                for (size_t i = 0; i < 4; i++)
+                {
+                    token.erase(std::remove(token.begin(),token.end(),s1[i]),token.end());
+                }
+                if (position==1)
+                {
+                    //std::cout << token << std::endl;
+                    name = token;
+                }else if(position==2){
+                    hp = atoi(token.c_str());
+                }else if(position==3){
+                    dmg = atoi(token.c_str());
+                }
+                
+                position+=1;
+                
+            }
+                return Player(hp,dmg,name);
+        }
+
+        return Player();
+    }
+
+    const uint_t getHealth();
+
+    const uint_t getDamage();
+    
+    void receivedDamage(const Player p); 
+
+    const std::string getName();
+
+    private:
+    uint_t health;
+    uint_t damage;
+    std::string name;
+};
+    
+#endif //PLAYER_HPP//
