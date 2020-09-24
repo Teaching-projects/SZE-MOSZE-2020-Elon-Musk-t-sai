@@ -21,4 +21,3 @@
     const std::string Player::getName(){
         return name;
     }
-
