@@ -11,13 +11,13 @@ class Player{
     Player(const uint_t hp, const uint_t dmg, const std::string n):health(hp),damage(dmg),name(n){
     
     }
-    const uint_t getHealth();
+    uint_t getHealth() const;
 
-    const uint_t getDamage();
+    uint_t getDamage() const;
     
     void receivedDamage(const Player p); 
 
-    const std::string getName();
+    std::string getName() const;
 
     private:
     uint_t health;

@@ -1,10 +1,10 @@
 #include "player.hpp"
 
 
-    const uint_t Player::getHealth(){
+    uint_t Player::getHealth(){
         return health;
     }
-    const uint_t Player::getDamage(){
+    uint_t Player::getDamage(){
         return damage;
     }
     
@@ -12,13 +12,12 @@
         const uint_t dmg = p.getDamage();
         if(health>dmg){
             health = health - dmg;
-        }else if(dmg>=health)
-        {
+        }else         {
             health=0;
         }
           
     }
-    const std::string Player::getName(){
+    std::string Player::getName(){
         return name;
     }
 
