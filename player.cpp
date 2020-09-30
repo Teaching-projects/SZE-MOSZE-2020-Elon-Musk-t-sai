@@ -1,10 +1,10 @@
 #include "player.hpp"
 
 
-    uint_t Player::getHealth(){
+    uint_t Player::getHealth() const{
         return health;
     }
-    uint_t Player::getDamage(){
+    uint_t Player::getDamage() const{
         return damage;
     }
     
@@ -17,7 +17,7 @@
         }
           
     }
-    std::string Player::getName(){
+    std::string Player::getName() const{
         return name;
     }
 
